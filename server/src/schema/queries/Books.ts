@@ -1,4 +1,4 @@
-import { GraphQLList } from "graphql";
+import { GraphQLList, GraphQLID, GraphQLString } from "graphql";
 import { BooksType } from "../typeDefs/Books";
 import { BooksModel } from '../../models/books';
 import { createClient } from 'redis';
@@ -31,5 +31,16 @@ export const Get_All_Books = {
     type: new GraphQLList(BooksType),
     async resolve() {
         return await runCache();
+    }
+}
+
+
+export const Get_Books_By_ID = {
+    type: BooksType,
+    args: {
+        _id: { type: GraphQLString },
+    },
+    async resolve(parent: any, args: any): Promise<IBooks> {
+        return <IBooks> await BooksModel.findById(args._id);
     }
 }

@@ -1,6 +1,8 @@
 import React from "react";
+import { Routes, Route } from "react-router-dom";
 import { ApolloClient, InMemoryCache, ApolloProvider  } from '@apollo/client';
 import BooksList from "./Components/Books";
+import BookDetail from "./Components/Books/detail";
 
 function App() {
 
@@ -12,7 +14,10 @@ function App() {
   return (
     <>
       <ApolloProvider client={client}>
-        <BooksList></BooksList>
+        <Routes>
+          <Route path="/" element={<BooksList/>} />
+          <Route path="/book/:id" element={<BookDetail/>} />
+      </Routes>
       </ApolloProvider>
     </>
   );

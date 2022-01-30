@@ -1,11 +1,13 @@
 import { GraphQLObjectType, GraphQLSchema } from 'graphql';
 import { Get_All_Books } from './queries/Books';
+import { Get_Books_By_ID} from './queries/Books';
 import { Add_Book } from './mutations/Books';
 
 const RootQuery = new GraphQLObjectType({
     name: "RootQuery",
     fields: {
-        getAllBooks: Get_All_Books
+        getAllBooks: Get_All_Books,
+        getBookById: Get_Books_By_ID
     }
 });
 
