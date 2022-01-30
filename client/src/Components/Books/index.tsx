@@ -20,9 +20,13 @@ function BooksList(){
         }
     }, [loading, data])
 
-    const searchPage = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const arr = data.getAllBooks.filter((el:IBooks) => el.title.toLowerCase().includes(e.target.value.toLowerCase()));
-        setBooks(arr);
+    const searchBookHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if(e.target.value.length > 3){
+            const arr = data.getAllBooks.filter((el:IBooks) => el.title.toLowerCase().includes(e.target.value.toLowerCase()));
+            setBooks(arr);
+        }else{
+            setBooks(data.getAllBooks);
+        }  
     }
 
 
@@ -59,7 +63,7 @@ function BooksList(){
                                     className="hidden h-full w-full border-transparent py-2 pl-8 pr-3 text-sm text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-0 focus:border-transparent focus:placeholder-gray-400 sm:block"
                                     placeholder="Search Books"
                                     type="search"
-                                    onChange={(e) => searchPage(e)}
+                                    onChange={(e) => searchBookHandler(e)}
                                     />
                                 </div>
                             </div>
