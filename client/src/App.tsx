@@ -7,7 +7,7 @@ import BookDetail from "./Components/Books/detail";
 function App() {
 
   const client = new ApolloClient({
-    uri: "http://localhost:4001/graphql",
+    uri: "http://31.146.26.29:4001/graphql",
     cache: new InMemoryCache()
   })
 
